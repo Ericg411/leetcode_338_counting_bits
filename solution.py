@@ -2,12 +2,7 @@ from typing import List
 
 class Solution:
     def countBits(self, n: int) -> List[int]:
-        result = []
-        for i in range(0, n + 1):
-            binary_string = bin(i)
-            counter = 0
-            for c in binary_string:
-                if c == '1':
-                    counter += 1
-            result.append(counter)
+        result = [0] * (n + 1)
+        for i in range(1, (n + 1)):
+            result[i] = result[i >> 1] + (i & 1)
         return result
